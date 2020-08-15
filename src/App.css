@@ -6,4 +6,5 @@ body{
 .app__body{
     display: flex;
     height: 100vh;
+    background-color: var(--slack-color);
 }

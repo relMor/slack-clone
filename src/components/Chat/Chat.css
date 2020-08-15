@@ -3,6 +3,8 @@
   flex-grow: 1;
   overflow: auto;
   padding-bottom: 150px;
+  background-color: white;
+  border-radius: 10px;
 }
 
 .chat__header {

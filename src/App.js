@@ -10,30 +10,31 @@ import Login from "./components/Login/Login";
 import { useStateValue } from "./logic/StateProvider";
 import { actionTypes } from "./logic/reducer";
 import { auth } from "./firebase";
+import Welcome from "./components/Welcome/Welcome";
 
 function App() {
   const [{ user }, dispatch] = useStateValue();
 
-  // useEffect(() => {
-  //   const unsubscribe = auth.onAuthStateChanged((authUser) => {
-  //     if (authUser) {
-  //       dispatch({
-  //         type: actionTypes.SET_USER,
-  //         user: authUser,
-  //       });
-  //     } else {
-  //       dispatch({
-  //         type: actionTypes.LOGOUT,
-  //         user: null
-  //       });
-  //     }
-  //   });
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        dispatch({
+          type: actionTypes.SET_USER,
+          user: authUser,
+        });
+      } else {
+        dispatch({
+          type: actionTypes.SET_USER,
+          user: null
+        });
+      }
+    });
 
-  //   return () => {
-  //     //perfom cleanup
-  //     unsubscribe();
-  //   };
-  // }, []);
+    return () => {
+      //perfom cleanup
+      unsubscribe();
+    };
+  }, []);
 
   return (
     <div className="app">
@@ -48,7 +49,7 @@ function App() {
             <Switch>
               <Route path="/room/:roomId" component={Chat} />
               <Route path="/">
-                <h1>Welcome</h1>
+                <Welcome />
               </Route>
             </Switch>
           </div>

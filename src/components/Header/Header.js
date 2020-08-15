@@ -7,17 +7,13 @@ import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 
 import "./Header.css";
 import { useStateValue } from "../../logic/StateProvider";
-import { actionTypes } from "../../logic/reducer";
+
 import { Button } from "@material-ui/core";
+import { auth } from "../../firebase";
 
 function Header() {
-  const [{ user }, dispatch] = useStateValue();
+  const [{ user }] = useStateValue();
 
-  const logoutHandler = () => {
-    dispatch({
-      type: actionTypes.LOGOUT,
-    });
-  };
 
   return (
     <div className="header">
@@ -35,7 +31,7 @@ function Header() {
         <input placeholder="Search Fellow Programmer" type="text" />
       </div>
       <div className="header__right">
-        <Button onClick={logoutHandler}>LOGOUT</Button>
+        <Button onClick={() => auth.signOut()}>LOGOUT</Button>
         <HelpOutlineIcon />
       </div>
     </div>
