@@ -4,6 +4,7 @@
   color: white;
   border: 1px solid #49274b;
   max-width: 260px;
+  overflow-y: auto;
 }
 
 .sidebar__header {

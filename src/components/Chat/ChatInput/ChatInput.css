@@ -18,6 +18,10 @@
   padding: 20px;
 }
 
+.chatInput > form > input:focus {
+  border: 2px solid lightblue;
+}
+
 .chatInput > form > button {
   display: none !important;
 }

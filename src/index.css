@@ -1,6 +1,8 @@
 *{
   margin: 0;
+  scrollbar-width: none;
 }
+
 
 body {
   margin: 0;
