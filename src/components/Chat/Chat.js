@@ -6,6 +6,7 @@ import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import "./Chat.css";
 import db from "../../firebase";
 import Message from "./Message/Message";
+import ChatInput from "./ChatInput/ChatInput";
 
 function Chat() {
   const [roomDetails, setRoomDetails] = useState(null);
@@ -28,7 +29,8 @@ function Chat() {
       );
   }, [roomId]);
 
-  console.log(roomMessages);
+  //console.log(roomDetails);
+  //console.log(roomMessages);
 
   return (
     <div className="chat">
@@ -48,6 +50,7 @@ function Chat() {
       <div className="chat__messages">
         {roomMessages.map(({ message, user, timestamp, userImage }) => (
           <Message
+            key={timestamp}
             message={message}
             timestamp={timestamp}
             user={user}
@@ -55,6 +58,7 @@ function Chat() {
           />
         ))}
       </div>
+      <ChatInput className="chat__input" channelName={roomDetails?.name} channelId={roomId} />
     </div>
   );
 }
